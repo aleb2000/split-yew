@@ -3,6 +3,7 @@ name = "split-yew"
 version = "0.1.0"
 edition = "2021"
 description = "Yew component for the Split.js library"
+authors = ["Alessandro Balducci <aleb2000@hotmail.com>"]
 readme = "README.md"
 repository = "https://github.com/aleb2000/split-yew"
 license = "MIT"
