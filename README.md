@@ -4,9 +4,23 @@ This library adds a Yew component wrapper for the [Split.js library](https://spl
 
 This library does NOT include a component for [split-grid](https://github.com/nathancahill/split/tree/master/packages/split-grid).
 
-The version of split.js packaged with split-yew is version *1.6.5*
+split-yew has been tested with split.js version *1.6.5*
 
 ## Usage
+
+Start by including the split.js module in your index.html file header tag like so:
+
+```html
+<script type="importmap">
+    {
+        "imports": {
+            "split.js": "https://unpkg.com/split.js@1.6.5/dist/split.es.js"
+        }
+    }
+</script>
+```
+
+Make sure it is of type `importmap` and that the import is called `split.js`. Also make sure you choose the ES module version and not the CommonJS one. It is worth noting that split.js does not include a minified version of the ES module script, hence if you want one you will have to package it yourself. After that the library should work without issues.
 
 Much like its React counterpart, you just have to surround the components you want to be in a resizable split view.
 
@@ -19,6 +33,8 @@ html! {
     </Split>
 }
 ```
+
+## Documentation
 
 You can customize the split using props. I tried to keep compatibility with the react-split component, hence you can also mostly refer to [its reference](https://github.com/nathancahill/split/tree/master/packages/react-split#reference) as well as [Split.js's documentation](https://github.com/nathancahill/split/tree/master/packages/splitjs#documentation) with some minor changes to the API.
 
@@ -98,15 +114,3 @@ As shown in the example, the final type of `my_gutter` will be a `js_sys::Functi
 ## License
 
 This project follows the [MIT license](./LICENSE-MIT).
-
-**Split.js** is published under the MIT license.
-
-### Split.js License
-
-Copyright (c) 2019 Nathan Cahill
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
