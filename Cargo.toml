@@ -2,12 +2,12 @@
 name = "split-yew"
 version = "0.1.0"
 edition = "2021"
-description = "Yew component for the Split.js library"
+description = "Yew component for the Split.js library: a resizable split view for web apps."
 authors = ["Alessandro Balducci <aleb2000@hotmail.com>"]
 readme = "README.md"
 repository = "https://github.com/aleb2000/split-yew"
 license = "MIT"
-keywords = ["yew", "component", "split", "split.js", "wrapper"]
+keywords = ["yew", "component", "split", "resizable", "wrapper"]
 categories = ["gui", "wasm", "web-programming"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
