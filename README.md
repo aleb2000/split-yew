@@ -20,7 +20,7 @@ html! {
 }
 ```
 
-You can customize the split using props. I tried to keep compatibility with the react-split component, hence you can also mostly refer to [it's reference](https://github.com/nathancahill/split/tree/master/packages/react-split#reference) as well as [Split.js's documentation](https://github.com/nathancahill/split/tree/master/packages/splitjs#documentation) with some minor changes to the API.
+You can customize the split using props. I tried to keep compatibility with the react-split component, hence you can also mostly refer to [its reference](https://github.com/nathancahill/split/tree/master/packages/react-split#reference) as well as [Split.js's documentation](https://github.com/nathancahill/split/tree/master/packages/splitjs#documentation) with some minor changes to the API.
 
 The component differs from its React counterpart in the following ways:
 
@@ -35,9 +35,9 @@ These two props originally accept two possible different types, either a single 
 To emulate this behavior in Rust, split-yew has four different props:
 
 - `min_size`/`max_size`: where you can specify a single value to apply to all components.
-- `min_sizes`/`max_sizes`: where you can specify a vector of values, on for each component.
+- `min_sizes`/`max_sizes`: where you can specify a vector of values, one for each component.
 
-While you can specify, for example, both a `min_size` and a `min_sizes` at the same time; the vector variant will always take priority, as shown in the following example:
+While you can specify, for instance, both a `min_size` and a `min_sizes` at the same time; the vector variant will always take priority, as shown in the following example:
 
 ```rust
 html! {
@@ -54,7 +54,7 @@ In this example the two components will have a min size of 100 and 200 respectiv
 
 Props `gutter`, `element_style`, `gutter_style`, `on_drag`, `on_drag_start`, and `on_drag_end` are supposed to accept a function or closure. Unfortunately I was not able to represent them with a `yew::Callback` or `wasm_bindgen::Closure` type. The best thing I was able to do at the moment was use a `js_sys::Function` type, which can still be passed as prop, as well as to the split.js library itself.
 
-This is makes passing these props a bit inconvenient as the `js_sys::Function` type does not include any type information about function arguments or return type, however all that information is already available in the official split.js docs, so refer to that if you need to implement one of these functions.
+This makes passing these props a bit inconvenient, as the `js_sys::Function` does not include any type information about function arguments or return type, however all that information is already available in the official split.js docs, so refer to that if you need to implement one of these functions.
 
 For the implementation itself, you can simply implement a `wasm_bindgen::Closure` and convert it to a `js_sys::Function`. The following example shows how to create such a function for the `gutter` prop.
 
