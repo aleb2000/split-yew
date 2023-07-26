@@ -1,3 +1,4 @@
+#![doc = include_str!("../README.md")]
 use std::fmt::Display;
 
 use wasm_bindgen::{__rt::IntoJsResult, prelude::*};
