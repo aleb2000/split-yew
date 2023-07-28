@@ -115,6 +115,10 @@ impl Component for Split {
             let children = js_sys::Array::from(&children);
             let options = Self::make_options_object(ctx.props());
             self.split = Some(js::Split::new(children, options));
+
+            if let Some(collapsed) = ctx.props().collapsed {
+                self.split.as_ref().unwrap_throw().collapse(collapsed);
+            }
         }
     }
 
