@@ -15,4 +15,4 @@ categories = ["gui", "wasm", "web-programming"]
 js-sys = "0.3.64"
 wasm-bindgen = "0.2.87"
 web-sys = "0.3.64"
-yew = "0.20"
+yew = { git = "https://github.com/yewstack/yew/" }

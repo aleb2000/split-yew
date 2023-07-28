@@ -517,12 +517,12 @@ dependencies = [
 
 [[package]]
 name = "prettyplease"
-version = "0.1.25"
+version = "0.2.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6c8646e95016a7a6c4adea95bafa8a16baab64b583356217f2c85db4a39d9a86"
+checksum = "6c64d9ba0963cdcea2e1b2230fbae2bab30eb25a174be395c41e764bfb65dd62"
 dependencies = [
  "proc-macro2",
- "syn 1.0.109",
+ "syn 2.0.26",
 ]
 
 [[package]]
@@ -682,7 +682,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237"
 dependencies = [
  "proc-macro2",
- "quote",
  "unicode-ident",
 ]
 
@@ -862,8 +861,7 @@ dependencies = [
 [[package]]
 name = "yew"
 version = "0.20.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5dbecfe44343b70cc2932c3eb445425969ae21754a8ab3a0966981c1cf7af1cc"
+source = "git+https://github.com/yewstack/yew/#b33214efc1acb0395d6909e827866d7855045b2a"
 dependencies = [
  "console_error_panic_hook",
  "futures",
@@ -887,8 +885,7 @@ dependencies = [
 [[package]]
 name = "yew-macro"
 version = "0.20.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b64c253c1d401f1ea868ca9988db63958cfa15a69f739101f338d6f05eea8301"
+source = "git+https://github.com/yewstack/yew/#b33214efc1acb0395d6909e827866d7855045b2a"
 dependencies = [
  "boolinator",
  "once_cell",
@@ -896,5 +893,5 @@ dependencies = [
  "proc-macro-error",
  "proc-macro2",
  "quote",
- "syn 1.0.109",
+ "syn 2.0.26",
 ]
