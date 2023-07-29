@@ -113,7 +113,7 @@ impl Component for Split {
                 .children();
 
             let children = js_sys::Array::from(&children);
-            let options = Self::make_options_object(ctx.props());
+            let options = ctx.props().make_options_object();
             self.split = Some(js::Split::new(children, options));
 
             if let Some(collapsed) = ctx.props().collapsed {
@@ -158,7 +158,7 @@ impl Component for Split {
             ..
         } = old_props;
 
-        let mut needs_recreate = Self::other_props_changed(ctx.props(), old_props);
+        let mut needs_recreate = ctx.props().other_props_changed(old_props);
 
         if min_sizes.is_some() && old_min_sizes.is_some() {
             let mut min_size_changed = false;
@@ -183,7 +183,7 @@ impl Component for Split {
         }
 
         if needs_recreate {
-            let options = Self::make_options_object(ctx.props());
+            let options = ctx.props().make_options_object();
 
             // This is done in the React version, not sure why exactly but I'm doing it as well
             let cur_sizes = js_sys::Reflect::get(&options, &"sizes".into()).unwrap_throw();
@@ -319,8 +319,8 @@ impl Display for Cursor {
     }
 }
 
-impl Split {
-    fn other_props_changed(props: &SplitProps, old_props: &SplitProps) -> bool {
+impl SplitProps {
+    fn other_props_changed(&self, old_props: &SplitProps) -> bool {
         let SplitProps {
             max_size,
             expand_to_min,
@@ -331,7 +331,7 @@ impl Split {
             direction,
             cursor,
             ..
-        } = props;
+        } = self;
 
         let SplitProps {
             max_size: old_max_size,
@@ -371,7 +371,7 @@ impl Split {
         }
     }
 
-    fn make_options_object(props: &SplitProps) -> js_sys::Object {
+    fn make_options_object(&self) -> js_sys::Object {
         let SplitProps {
             sizes,
             min_size,
@@ -392,7 +392,7 @@ impl Split {
             on_drag_start,
             on_drag_end,
             ..
-        } = props;
+        } = self;
 
         let options = js_sys::Object::new();
         let f64_vec_to_arr = |v: &Vec<f64>| {
