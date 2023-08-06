@@ -183,9 +183,7 @@ impl Component for Split {
         }
 
         if needs_recreate {
-            web_sys::console::log_1(&"Recreating split".into());
             let options = ctx.props().make_options_object();
-            web_sys::console::log_1(&options);
 
             // This is done in the React version, not sure why exactly but I'm doing it as well
             let cur_sizes = js_sys::Reflect::get(&options, &"sizes".into()).unwrap_throw();
@@ -243,9 +241,6 @@ impl Component for Split {
                     .unwrap_throw()
                     .is_falsy()
             });
-
-            web_sys::console::log_1(&"Non gutter children".into());
-            web_sys::console::log_1(&non_gutter_children);
 
             self.split = Some(js::Split::new(non_gutter_children, options));
         } else if sizes.is_some() {
@@ -364,12 +359,6 @@ impl SplitProps {
             cursor: old_cursor,
             ..
         } = old_props;
-
-        // TODO: remove
-        if direction != old_direction {
-            web_sys::console::log_1(&"Direction changed".into());
-            web_sys::console::log_1(&direction.as_ref().unwrap().to_string().into());
-        }
 
         max_size != old_max_size
             || expand_to_min != old_expand_to_min
