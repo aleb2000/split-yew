@@ -7,7 +7,7 @@ use yew::prelude::*;
 
 mod js;
 
-#[derive(Properties, PartialEq)]
+#[derive(Clone, Properties, PartialEq)]
 pub struct SplitProps {
     /// Classes to apply to the split container element
     #[prop_or_default]
@@ -272,7 +272,7 @@ impl Component for Split {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GutterAlign {
     Start,
     End,
@@ -289,7 +289,7 @@ impl Display for GutterAlign {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Direction {
     Vertical,
     Horizontal,
@@ -304,7 +304,7 @@ impl Display for Direction {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Cursor {
     ColResize,
     RowResize,
