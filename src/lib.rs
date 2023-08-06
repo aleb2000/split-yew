@@ -183,7 +183,9 @@ impl Component for Split {
         }
 
         if needs_recreate {
+            web_sys::console::log_1(&"Recreating split".into());
             let options = ctx.props().make_options_object();
+            web_sys::console::log_1(&options);
 
             // This is done in the React version, not sure why exactly but I'm doing it as well
             let cur_sizes = js_sys::Reflect::get(&options, &"sizes".into()).unwrap_throw();
@@ -199,15 +201,30 @@ impl Component for Split {
             js::Split::destroy(self.split.as_ref().unwrap_throw(), true.into(), true.into());
 
             // The old gutter creates new div elements, here we just want to get the divs already
-            // in the DOM
+            // in the DOM and prepare them for the new split
             let new_gutter: js_sys::Function =
                 Closure::<dyn Fn(js_sys::BigInt, String, Element) -> Element>::new(
-                    |_index, _direction, pair_element: Element| {
-                        pair_element
+                    |_index, direction, pair_element: Element| {
+                        let gutter_el: Element = pair_element
                             .previous_sibling()
                             .map(|node| node.into_js_result().unwrap_throw())
                             .unwrap_or(JsValue::UNDEFINED)
-                            .into()
+                            .into();
+
+                        if direction == "horizontal" {
+                            gutter_el.set_class_name("gutter gutter-horizontal");
+                        } else {
+                            gutter_el.set_class_name("gutter gutter-vertical");
+                        }
+
+                        // We need to reset the styles otherwise the element will keep the
+                        // width/height that was assigned by the previous split. No need to manually
+                        // set the width/height ourselves as split.js will do that for us
+                        gutter_el
+                            .set_attribute("style", "")
+                            .expect_throw("Cannot reset gutter style on recreate");
+
+                        gutter_el
                     },
                 )
                 .into_js_value()
@@ -226,6 +243,9 @@ impl Component for Split {
                     .unwrap_throw()
                     .is_falsy()
             });
+
+            web_sys::console::log_1(&"Non gutter children".into());
+            web_sys::console::log_1(&non_gutter_children);
 
             self.split = Some(js::Split::new(non_gutter_children, options));
         } else if sizes.is_some() {
@@ -344,6 +364,12 @@ impl SplitProps {
             cursor: old_cursor,
             ..
         } = old_props;
+
+        // TODO: remove
+        if direction != old_direction {
+            web_sys::console::log_1(&"Direction changed".into());
+            web_sys::console::log_1(&direction.as_ref().unwrap().to_string().into());
+        }
 
         max_size != old_max_size
             || expand_to_min != old_expand_to_min
