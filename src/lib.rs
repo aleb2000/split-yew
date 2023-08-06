@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 use std::fmt::Display;
 
+use regex::Regex;
 use wasm_bindgen::{__rt::IntoJsResult, prelude::*};
 use web_sys::{Element, HtmlElement};
 use yew::prelude::*;
@@ -241,6 +242,30 @@ impl Component for Split {
                     .unwrap_throw()
                     .is_falsy()
             });
+
+            // We need to reset height/width styles for all non-gutter children, otherwise they will
+            // remain with the width/height set during the previous split
+            let width_regex = Regex::new(r"width: .*;").unwrap_throw();
+            let height_regex = Regex::new(r"height: .*;").unwrap_throw();
+            for child in non_gutter_children.iter() {
+                let child: Element = child.into();
+                if let Some(style) = child.get_attribute("style") {
+                    let new_style = match ctx
+                        .props()
+                        .direction
+                        .as_ref()
+                        .expect_throw("No direction during update")
+                    {
+                        // width/height is inverted compared to direction as we need to reset the
+                        // current non-splitting direction
+                        Direction::Vertical => width_regex.replace_all(&style, ""),
+                        Direction::Horizontal => height_regex.replace_all(&style, ""),
+                    };
+                    child
+                        .set_attribute("style", &new_style)
+                        .expect_throw("Cannot reset child style on recreate");
+                }
+            }
 
             self.split = Some(js::Split::new(non_gutter_children, options));
         } else if sizes.is_some() {
