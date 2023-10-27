@@ -15,39 +15,51 @@ pub struct SplitProps {
     pub class: Classes,
 
     /// Initial sizes of each element
+    #[prop_or_default]
     pub sizes: Option<Vec<f64>>,
 
     /// Minimum size of all elements (if min_sizes is specified, this will be ignored)
+    #[prop_or_default]
     pub min_size: Option<f64>,
 
     /// Minimum size of each element
+    #[prop_or_default]
     pub min_sizes: Option<Vec<f64>>,
 
     /// Maximum size of all elements (if max_sizes is specified, this will be ignored)
+    #[prop_or_default]
     pub max_size: Option<f64>,
 
     /// Maximum size of each element
+    #[prop_or_default]
     pub max_sizes: Option<Vec<f64>>,
 
     /// Grow initial sizes to min_size (default: false)
+    #[prop_or_default]
     pub expand_to_min: Option<bool>,
 
     /// Gutter size in pixels (default: 10)
+    #[prop_or_default]
     pub gutter_size: Option<f64>,
 
     /// Gutter alignment between elements (default: GutterAlign::Center)
+    #[prop_or_default]
     pub gutter_align: Option<GutterAlign>,
 
     /// Snap to minimum size offset in pixels (default: 30)
+    #[prop_or_default]
     pub snap_offset: Option<f64>,
 
     /// Number of pixels to drag (default: 1)
+    #[prop_or_default]
     pub drag_interval: Option<f64>,
 
     /// Direction to split: horizontal or vertical (default: Direction::Horizontal)
+    #[prop_or_default]
     pub direction: Option<Direction>,
 
     /// Cursor to display while dragging (default: Cursor::ColResize)
+    #[prop_or_default]
     pub cursor: Option<Cursor>,
 
     /// Called to create each gutter element
@@ -77,20 +89,26 @@ pub struct SplitProps {
     pub gutter: js_sys::Function,
 
     /// Called to set the style of each element
+    #[prop_or_default]
     pub element_style: Option<js_sys::Function>,
 
     /// Called to set the style of the gutter
+    #[prop_or_default]
     pub gutter_style: Option<js_sys::Function>,
 
     /// Called on drag
+    #[prop_or_default]
     pub on_drag: Option<js_sys::Function>,
 
     /// Called on drag start
+    #[prop_or_default]
     pub on_drag_start: Option<js_sys::Function>,
 
     /// Called on drag end
+    #[prop_or_default]
     pub on_drag_end: Option<js_sys::Function>,
 
+    #[prop_or_default]
     pub collapsed: Option<usize>,
 
     pub children: Children,
