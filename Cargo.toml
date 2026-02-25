@@ -1,6 +1,6 @@
 [package]
 name = "split-yew"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 description = "Yew component for the Split.js library: a resizable split view for web apps."
 authors = ["Alessandro Balducci <aleb2000@hotmail.com>"]
@@ -16,4 +16,4 @@ js-sys = "0.3.64"
 regex = "1.9.3"
 wasm-bindgen = "0.2.87"
 web-sys = "0.3.64"
-yew = "0.21"
+yew = "0.22"
