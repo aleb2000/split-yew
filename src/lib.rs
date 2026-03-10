@@ -154,7 +154,7 @@ impl Component for Split {
         } = ctx.props();
 
         html! {
-            <div class={(*class).clone()} ref={self.parent_ref.clone()}>
+            <div class={class.clone()} ref={self.parent_ref.clone()}>
                 { for children.iter() }
             </div>
         }

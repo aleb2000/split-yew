@@ -11,8 +11,8 @@
 [docsrs-url]: https://docs.rs/split-yew/
 [license-badge]: https://img.shields.io/github/license/aleb2000/split-yew
 [license-url]: https://github.com/aleb2000/split-yew/blob/main/LICENSE-MIT
-[yew-badge]: https://img.shields.io/badge/yew-0.21-009a5b
-[yew-url]: https://crates.io/crates/yew/0.21.0
+[yew-badge]: https://img.shields.io/badge/yew-0.23-009a5b
+[yew-url]: https://crates.io/crates/yew/0.23.0
 
 
 This library adds a Yew component wrapper for the [Split.js library](https://split.js.org/). Similar to the [react-split](https://github.com/nathancahill/split/tree/master/packages/react-split) component.
