@@ -14,6 +14,6 @@ categories = ["gui", "wasm", "web-programming"]
 [dependencies]
 js-sys = "0.3.64"
 regex = "1.9.3"
-wasm-bindgen = "0.2.87"
+wasm-bindgen = "0.2.114"
 web-sys = "0.3.64"
 yew = "0.23"
