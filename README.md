@@ -23,7 +23,7 @@ split-yew has been tested with split.js version *1.6.5*
 
 ## Usage
 
-Start by including the split.js module in your index.html file header tag like so:
+Start by including the split.js module in your index.html file, at the top of the `<head>` tag like so:
 
 ```html
 <script type="importmap">
@@ -36,6 +36,11 @@ Start by including the split.js module in your index.html file header tag like s
 ```
 
 Make sure it is of type `importmap` and that the import is called `split.js`. Also make sure you choose the ES module version and not the CommonJS one. It is worth noting that split.js does not include a minified version of the ES module script, hence if you want one you will have to package it yourself. After that the library should work without issues.
+
+
+> [!IMPORTANT]
+> On Firefox you might get an error saying `Uncaught TypeError: The specifier "split.js" was a bare specifier, but was not remapped to anything. Relative module specifiers must start with "./", "../" or "/".`.
+> To prevent this from happening you should make sure that the script tag appears in your head tag before any other script or link tag.
 
 Much like its React counterpart, you just have to surround the components you want to be in a resizable split view.
 
